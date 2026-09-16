@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GameCard — каталог товаров</title>
+	<meta name="description" content="Каталог карт пополнения PlayStation Store и Apple Gift Card, пополнение Steam по логину. Фильтр по платформе, стране, номиналу и цене.">
+	<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="styles.css" id="main-styles">
+	<link rel="stylesheet" href="print.css" media="not all" id="print-styles">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+<a class="skip-link" href="#main">Пропустить навигацию</a>
+
+<header class="header" role="banner">
+	<div class="container">
+		<div class="header-content">
+			<a href="index.html" class="logo" aria-label="GameCard — главная">
+				<img class="logo-image" src="images/logo.svg" alt="Логотип GameCard">
+				Game<span class="logo-accent">Card</span>
+			</a>
+			<a href="profile.html" class="profile-link">Профиль</a>
+		</div>
+	</div>
+</header>
+
+<section class="hero" role="region" aria-label="Каталог товаров">
+	<div class="container">
+		<div class="hero-content fade-in">
+			<h1 class="hero-title">Каталог товаров</h1>
+			<p class="hero-subtitle">Доступно <span id="catalog-count">10 товаров</span>. Недоступные сочетания фильтров подсвечиваются серым — так работает «умный фильтр»</p>
+		</div>
+	</div>
+</section>
+
+
+<main id="main" class="site-main">
+	<div class="container">
+		<section class="main-content fade-in">
+
+			<div class="catalog-toolbar">
+				<label class="visually-hidden" for="sort">Сортировка</label>
+				<select class="select" id="sort">
+					<option value="popular">Сначала популярные</option>
+					<option value="price-asc">Цена: по возрастанию</option>
+					<option value="price-desc">Цена: по убыванию</option>
+					<option value="rating">По рейтингу</option>
+				</select>
+				<button class="btn btn-ghost btn-small" type="button" data-print-toggle>Версия для печати</button>
+			</div>
+
+			<div class="catalog-layout">
+				<aside class="filters">
+					<h2 class="visually-hidden">Фильтр товаров</h2>
+					<div id="filters"></div>
+					<button class="btn btn-ghost btn-small" type="button" id="reset-filters">Сбросить фильтры</button>
+				</aside>
+
+				<div>
+					<section class="steam-block" id="steam-block" hidden>
+						<h3>Пополнение Steam</h3>
+						<p>Карты пополнения для Steam не нужны: укажите логин аккаунта и сумму в рублях — мы пополним кошелёк после подтверждения заказа</p>
+						<p class="form-message" id="steam-success" hidden></p>
+						<form class="form" id="steam-form">
+							<div class="form-field">
+								<label class="form-label" for="steam-login">Логин Steam</label>
+								<input class="form-input" id="steam-login" type="text" placeholder="Например: gamer_2026" required>
+							</div>
+							<div class="form-field">
+								<label class="form-label" for="steam-amount">Сумма пополнения, ₽</label>
+								<input class="form-input" id="steam-amount" type="number" min="100" max="15000" step="50" placeholder="1000" required>
+							</div>
+							<button class="btn" type="submit">Пополнить</button>
+						</form>
+					</section>
+
+					<div class="products-grid" id="products"></div>
+					<p class="catalog-empty" id="catalog-empty" hidden>По выбранным условиям ничего не найдено. Попробуйте изменить фильтр или сбросить его</p>
+				</div>
+			</div>
+
+		</section>
+	</div>
+</main>
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-content">
+			<section class="footer-section">
+				<h3>О нас</h3>
+				<p>GameCard — магазин пополнения игровых аккаунтов. Продаём карты PlayStation Store и Apple Gift Card, пополняем Steam по логину, работаем с 2026 года.</p>
+				<div class="map-container map-small">
+					<iframe src="https://yandex.ru/map-widget/v1/?text=%D0%91%D1%80%D1%8F%D0%BD%D1%81%D0%BA%2C%20%D0%B1%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%2050-%D0%BB%D0%B5%D1%82%D0%B8%D1%8F%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8F%2C%207&amp;z=16" title="Карта: Брянск, бульвар 50-летия Октября, 7"></iframe>
+				</div>
+			</section>
+
+			<section class="footer-section">
+				<h3><a href="catalog.html">Каталог</a></h3>
+				<p>Карты PlayStation Store и Apple Gift Card, пополнение Steam по логину и игры для PS5</p>
+			</section>
+
+			<section class="footer-section">
+				<h3>Покупателям</h3>
+				<p><a href="cart.html">Корзина и заказ</a></p>
+				<p><a href="profile.html">Личный кабинет</a></p>
+				<p><a href="about.html#contacts">Контакты</a></p>
+			</section>
+
+			<section class="footer-section">
+				<h3>Контакты</h3>
+				<p>241035, г. Брянск, ул. Бульвар 50-летия Октября, 7 (БГТУ)</p>
+				<p>Почта: <a href="mailto:shin_guards_0t@icloud.com">shin_guards_0t@icloud.com</a></p>
+				<p>Режим работы: ежедневно с 10:00 до 23:00</p>
+				<button class="btn btn-ghost btn-small" type="button" data-print-toggle>Версия для печати</button>
+			</section>
+		</div>
+
+		<div class="footer-bottom">
+			<p>© <span id="year">2025</span> GameCard. Все права защищены</p>
+		</div>
+	</div>
+</footer>
+
+<nav class="tabbar" aria-label="Основное меню">
+	<ul class="tabbar-list">
+		<li><a href="index.html" class="tab"><span class="tab-icon">🏠</span>Главная</a></li>
+		<li><a href="catalog.html" class="tab current"><span class="tab-icon">🛍️</span>Каталог</a></li>
+		<li><a href="cart.html" class="tab"><span class="tab-icon">🛒</span>Корзина</a></li>
+		<li><a href="profile.html" class="tab"><span class="tab-icon">👤</span>Профиль</a></li>
+		<li><a href="admin.html" class="tab"><span class="tab-icon">⚙️</span>Админ панель</a></li>
+	</ul>
+</nav>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

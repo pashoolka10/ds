@@ -1,0 +1,94 @@
+/* print.css — версия для печати (переключается кнопкой без перезагрузки страницы) */
+
+body {
+	background: #fff;
+	color: #000;
+	font: 14px/1.45 "Times New Roman", Georgia, serif;
+	padding: 0;
+}
+
+/* Вспомогательные блоки на печати не нужны */
+.header,
+.tabbar,
+.footer,
+.hero,
+.catalog-toolbar,
+.filters,
+.center-cta,
+.btn,
+.form,
+.map-container,
+.profile-avatar,
+.product-image,
+.cart-image,
+.qty-button,
+.cart-remove,
+.skip-link {
+	display: none;
+}
+
+.container { width: 100%; max-width: 100%; padding: 0; }
+
+.main-content {
+	background: #fff;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+}
+
+.section-title {
+	color: #000;
+	text-align: left;
+	border-bottom: 2px solid #000;
+	padding-bottom: 6px;
+	font-size: 18px;
+	margin: 12px 0;
+}
+
+.section-title::after { display: none; }
+
+.section-subtitle,
+.stat-title,
+.cart-meta,
+.review-note,
+.contact-item p,
+.product-card p,
+.catalog-empty { color: #000; }
+
+.stats-grid,
+.categories-grid,
+.features-grid,
+.reviews-grid,
+.products-grid,
+.catalog-layout,
+.contact-info,
+.footer-content { display: block; }
+
+.info-card,
+.product-card,
+.cart-item,
+.cart-total,
+.contact-item,
+.profile-card,
+.steam-block {
+	background: #fff;
+	border: 1px solid #000;
+	color: #000;
+	padding: 8px 10px;
+	margin-bottom: 10px;
+	break-inside: avoid;
+}
+
+.price,
+.stat-value,
+.cart-sum,
+.cart-total-value,
+.product-rating,
+.review-stars,
+.old-price { color: #000; }
+
+a:link,
+a:visited { color: #000; text-decoration: underline; }
+
+@page { margin: 15mm; }
